@@ -1,0 +1,42 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+header{
+    padding: 1em;
+}
+h1{
+    font-size: 50px;
+}
+nav ul{
+    display: flex;
+    list-style: none;
+    padding: 1em;
+}
+ul li{
+    margin: 1em;
+    font-size: 20px;
+
+}
+.container{
+    display: flex;
+    justify-content: center;
+    padding: 1em;
+    padding-top: 5em;
+}
+.card{
+    margin: auto;
+
+}
+
+.tituloCamiseta{
+    font-size: 30px;
+    margin-bottom: 1em;
+}
+
+.fotoCamiseta img{
+    width: 400px;
+    height: 400px;
+    object-fit: cover;
+}
