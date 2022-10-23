@@ -8,46 +8,25 @@
     <link rel="stylesheet" href="./styles.css">
 </head>
 <body>
-    <header>
-        <h1>Camisetas Fulvo ⚽</h1>
-        <nav>
-            <ul>
-                <li>Inicio</li>
-                <li>Productos</li>
-                <li>Contacto</li>
-            </ul>
+    <div class="nav-container">
+        <nav class="navbar">
+            <h1 class="navbar-logo">Carrito</h1>
+            <h1 class="ver-carrito" id="verCarrito">🛒</h1>
         </nav>
-    </header>
-    <div class="container">
-
-        <div class="card">
-            <div class="tituloCamiseta">Camiseta River 2022</div>
-            <picture class="fotoCamiseta">
-                <img src="./assets/river camiseta.jpg.opdownload">
-            </picture>
-            <div class="precio">$1000</div>
+    </div>
+    <div class="banner">
+        <div class="banner-contenedor">
+            <h1>Camisetas Fulvito ⚽</h1>
+            <p>El lugar para el fuvolero</p>
         </div>
-
-        <div class="card">
-            <div class="tituloCamiseta">Camiseta Boca 2022</div>
-            <picture class="fotoCamiseta">
-                <img src="./assets/boca.jpg.opdownload">
-            </picture>
-            <div class="precio">$900</div>
-        </div>
-
-        <div class="card">
-            <div class="tituloCamiseta">Camiseta Argentina 2022</div>
-            <picture class="fotoCamiseta">
-                <img src="./assets/argentina.jpg">
-            </picture>
-            <div class="precio">$2000</div>
-        </div>
-
-
     </div>
 
-    </div>
-    <script src="./script.js"></script>
+    <div id="cardCamisetas" class="card-contenido"></div>
+
+    <div id="carrito-container" class="carrito-container"></div>
+
+<script src="./script.js"></script>
+<script src="./carrito.js"></script>
+
 </body>
 </html>

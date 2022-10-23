@@ -1,58 +1,76 @@
-alert("Bienvenide a Fulvito")
+const camisetas = [
+    {
+        id: 1,
+        nombre: "River Plate",
+        precio: 2000,
+        img: src="./assets/river camiseta.jpg.opdownload",
+        cantidad: 1,
+    },
+    {
+        id: 2,
+        nombre: "Boca Juniors",
+        precio: 1500,
+        img: src="./assets/boca.jpg.opdownload",
+        cantidad: 1,
+    },
+    {
+        id: 3,
+        nombre: "Selección Argentina",
+        precio: 3000,
+        img: src="./assets/argentina.jpg",
+        cantidad: 1,
+    },
+]; 
+const cardCamisetas = document.getElementById("cardCamisetas");
 
-class camisetas {
-    constructor(equipo, precio) {
-        this.equipo = equipo;
-        this.precio = precio;
+
+let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
+
+const verCarrito = document.getElementById("verCarrito");
+
+const carritoContainer = document.getElementById("carrito-container");
+
+camisetas.forEach((producto)=> {
+    let content = document.createElement("div");
+    content.className = "card"
+    content.innerHTML = `
+    <img src="${producto.img}">
+    <h3>${producto.nombre}</h3>
+    <p class="precio">$${producto.precio}</p>
+    `;
+
+    cardCamisetas.append(content);
+
+    let comprar = document.createElement("button")
+    comprar.innerText = "Comprar";
+
+    content.append(comprar);
+
+    comprar.addEventListener("click", () => {
+
+    const repetir = carrito.some((repetirProducto) => repetirProducto.id === producto.id);
+    console.log(repetir)
+    if(repetir){
+        carrito.map((prod) => {
+            if(prod.id === producto.id){
+                prod.cantidad ++;
+            }
+        })
+    } else {
+        carrito.push({
+            id : producto.id,
+            img : producto.img,
+            nombre : producto.nombre,
+            precio : producto.precio,
+            cantidad: producto.cantidad,
+            
+        });
     }
+        console.log(carrito)
+        guardarEnLocal();
+    });
+
+});
+const guardarEnLocal = () => {
+    localStorage.setItem("carrito", JSON.stringify(carrito))
 }
-
-let camisetaRiver = new camisetas("River Plate", 1000)
-let camisetaBocaJrs = new camisetas("Boca Juniors", 900)
-let camisetaArgentina = new camisetas("Argentina", 2000)
-
-let listaCamisetas = [camisetaRiver, camisetaBocaJrs, camisetaArgentina]
-
-console.log(listaCamisetas)
-let carrito =[]
-let precioTotal = 0
-let iva = 0.21
-
-let listaEquipos = listaCamisetas.map((camisetas) => camisetas.equipo + " " + "$" + camisetas.precio)
-
-alert("Estos son nuestros productos: \n - " + listaEquipos.join("\n - "))
-
-let elegirCamiseta = prompt("Ingrese de que equipo quiere comprar o ingrese 'LISTO' para finalizar la compra.")
-
-while(elegirCamiseta != "LISTO"){
-    
-    if (elegirCamiseta == "River"){
-        let cantidadCamisetaRiver = prompt("Ingrese que cantidad de " + camisetaRiver.equipo + " desea comprar ")
-            precioTotal = precioTotal + (cantidadCamisetaRiver * camisetaRiver.precio)
-    }
-    else if (elegirCamiseta == "Boca"){
-        let cantidadCamisetaBoca = prompt("Ingrese que cantidad de " + camisetaBocaJrs.equipo + " desea comprar ")
-            precioTotal = precioTotal + (cantidadCamisetaBoca * camisetaBocaJrs.precio)
-
-    }
-    else if (elegirCamiseta == "Argentina" || "Seleccion" || "arg"){
-        let cantidadCamisetaArg = prompt("Ingrese que cantidad de " + camisetaArgentina.equipo + " desea comprar ")
-            precioTotal = precioTotal + (cantidadCamisetaArg * camisetaArgentina.precio)
-    }
-    else{
-        alert("No contamos con ese producto")
-    }
-    elegirCamiseta = prompt ("¿Queres la camiseta de algun otro equipo? \n Ingrese de que equipo quiere comprar o ingrese 'LISTO' para salir \n - " + listaEquipos.join("\n -"))
-}
-function calcularIVA(a, b){
-    return a * b;
-}
-let resultadoFinal = calcularIVA(precioTotal, iva)
-if (precioTotal != 0){
-    alert ("el precio total con IVA incluido es: " + (precioTotal + resultadoFinal) + " pesos")
-    }
-alert("Gracias por tu compra")
-    
-
-
-
