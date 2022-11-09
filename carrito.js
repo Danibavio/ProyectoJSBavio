@@ -76,7 +76,7 @@ const totalCarrito = () => {
                     title: 'LISTO!',
                     imageUrl: './assets/messi.jpg',
                     imageWidth: 250,
-                    text:`Te enviamos un correo a: ${email} para continuar la compra. YA CASI TERMNO GENTE LO LOGRÉ`,
+                    text:`Te enviamos un correo a: "<b>${email}</b>" para continuar la compra.`,
                     footer: 'gracias por tu compra <3'
                 })
             }
@@ -99,3 +99,4 @@ const borrarProducto = () => {
 
 
 }
+

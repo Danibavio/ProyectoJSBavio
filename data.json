@@ -1,21 +1,45 @@
 [{
     "id": 1,
     "nombre": "River Plate",
-    "precio": 2000,
-    "img": "src='./assets/river camiseta.jpg.opdownload'",
+    "precio": 5000,
+    "img": "./assets/river.jpg",
     "cantidad": 1
 },
 {
     "id": 2,
     "nombre": "Boca Juniors",
-    "precio": 1500,
-    "img": "src='./assets/boca.jpg.opdownload'",
+    "precio": 4500,
+    "img": "./assets/boca.jpg",
     "cantidad": 1
 },
 {
     "id": 3,
     "nombre": "Selección Argentina",
-    "precio": 3000,
-    "img": "src='./assets/argentina.jpg'",
+    "precio": 6000,
+    "img": "./assets/argentina.jpg",
     "cantidad": 1
-}]
+},
+{
+    "id": 4,
+    "nombre": "Independiente",
+    "precio": 3500,
+    "img": "./assets/indep.png",
+    "cantidad": 1
+},
+{
+    "id": 5,
+    "nombre": "Racing",
+    "precio": 3500,
+    "img": "./assets/racing.jpg",
+    "cantidad": 1
+},
+{
+    "id": 6,
+    "nombre": "San Lorenzo",
+    "precio": 3000,
+    "img": "./assets/sanlo.png",
+    "cantidad": 1
+}
+
+
+]

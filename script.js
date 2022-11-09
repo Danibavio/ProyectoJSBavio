@@ -9,7 +9,7 @@ const verCarrito = document.getElementById("verCarrito");
 const carritoContainer = document.getElementById("carrito-container");
 
 fetch('data.json')
-.then((response)=> response.json)
+.then((response)=> response.json())
 .then((info)=>mostrarCamisetas(info))
 
 const mostrarCamisetas = (camisetas) => {
