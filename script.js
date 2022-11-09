@@ -1,27 +1,5 @@
-const camisetas = [
-    {
-        id: 1,
-        nombre: "River Plate",
-        precio: 2000,
-        img: src="./assets/river camiseta.jpg.opdownload",
-        cantidad: 1,
-    },
-    {
-        id: 2,
-        nombre: "Boca Juniors",
-        precio: 1500,
-        img: src="./assets/boca.jpg.opdownload",
-        cantidad: 1,
-    },
-    {
-        id: 3,
-        nombre: "Selección Argentina",
-        precio: 3000,
-        img: src="./assets/argentina.jpg",
-        cantidad: 1,
-    },
-]; 
 const cardCamisetas = document.getElementById("cardCamisetas");
+
 
 
 let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
@@ -30,47 +8,59 @@ const verCarrito = document.getElementById("verCarrito");
 
 const carritoContainer = document.getElementById("carrito-container");
 
-camisetas.forEach((producto)=> {
-    let content = document.createElement("div");
-    content.className = "card"
-    content.innerHTML = `
-    <img src="${producto.img}">
-    <h3>${producto.nombre}</h3>
-    <p class="precio">$${producto.precio}</p>
-    `;
+fetch('data.json')
+.then((response)=> response.json)
+.then((info)=>mostrarCamisetas(info))
 
-    cardCamisetas.append(content);
+const mostrarCamisetas = (camisetas) => {
+    camisetas.forEach((prod)=> {
+        const {id, nombre, precio, img, cantidad} = prod
+        let content = document.createElement("div");
+        content.className = "card"
+        content.innerHTML = `
+        <img src="${img}">
+        <h3>${nombre}</h3>
+        <p class="precio">$${precio}</p>
+        `;
+        
 
-    let comprar = document.createElement("button")
-    comprar.innerText = "Comprar";
+        cardCamisetas.append(content);
 
-    content.append(comprar);
+        let comprar = document.createElement("button")
+        comprar.className = "button"
+        comprar.innerText = "Comprar";
 
-    comprar.addEventListener("click", () => {
+        content.append(comprar);
 
-    const repetir = carrito.some((repetirProducto) => repetirProducto.id === producto.id);
-    console.log(repetir)
-    if(repetir){
-        carrito.map((prod) => {
-            if(prod.id === producto.id){
-                prod.cantidad ++;
-            }
-        })
-    } else {
-        carrito.push({
-            id : producto.id,
-            img : producto.img,
-            nombre : producto.nombre,
-            precio : producto.precio,
-            cantidad: producto.cantidad,
-            
+        comprar.addEventListener("click", () => {
+
+        const repetir = carrito.some((repetirProducto) => repetirProducto.id === id);
+        console.log(repetir)
+        if(repetir){
+            carrito.map((prod) => {
+                if(prod.id === id){
+                    prod.cantidad ++;
+                }
+            })
+        } else {
+            carrito.push({
+                id : id,
+                img : img,
+                nombre : nombre,
+                precio : precio,
+                cantidad: cantidad,
+                
+            });
+        }
+            console.log(carrito)
+            guardarEnLocal();
         });
-    }
-        console.log(carrito)
-        guardarEnLocal();
+
     });
 
-});
+
+}
+    
 const guardarEnLocal = () => {
     localStorage.setItem("carrito", JSON.stringify(carrito))
 }
