@@ -1,0 +1,21 @@
+[{
+    "id": 1,
+    "nombre": "River Plate",
+    "precio": 2000,
+    "img": "src='./assets/river camiseta.jpg.opdownload'",
+    "cantidad": 1
+},
+{
+    "id": 2,
+    "nombre": "Boca Juniors",
+    "precio": 1500,
+    "img": "src='./assets/boca.jpg.opdownload'",
+    "cantidad": 1
+},
+{
+    "id": 3,
+    "nombre": "Selección Argentina",
+    "precio": 3000,
+    "img": "src='./assets/argentina.jpg'",
+    "cantidad": 1
+}]
